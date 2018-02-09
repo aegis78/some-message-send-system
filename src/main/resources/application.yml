@@ -18,7 +18,6 @@ logging:
   config: classpath:logback/logback-console.xml
   level:
     'com.cyworld': DEBUG
-    'org.apache.kafka': DEBUG
 
 server:
   port: 8081
@@ -33,8 +32,7 @@ spring:
 logging:
   config: classpath:logback/logback-service.xml 
   level:
-    'com.cyworld': DEBUG
-    'org.apache.kafka': DEBUG
+      'com.cyworld': INFO
 
 #### http port set
 server:
@@ -50,8 +48,7 @@ spring:
 logging:
   config: classpath:logback/logback-service.xml
   level:
-    'com.cyworld': INFO
-    'org.apache.kafka': INFO
+      'com.cyworld': INFO
 
 #### http port set
 server:
