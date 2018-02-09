@@ -1,0 +1,58 @@
+#====================================
+#=============  common ===============
+#====================================
+info.app:
+  name: Some Messanger MSG Send System
+  description: telegram, slack, line... etc Message send System
+  version: 1.0.0-snapshot
+
+---
+
+#====================================
+#=============== local ==============
+#====================================
+spring:
+  profiles: local
+#### logback set
+logging:
+  config: classpath:logback/logback-console.xml
+  level:
+    'com.cyworld': DEBUG
+    'org.apache.kafka': DEBUG
+
+server:
+  port: 8081
+
+---
+#==================================== 
+#============= development ==========
+#====================================
+spring:
+  profiles: development
+#### logback set
+logging:
+  config: classpath:logback/logback-service.xml 
+  level:
+    'com.cyworld': DEBUG
+    'org.apache.kafka': DEBUG
+
+#### http port set
+server:
+  port: 9090
+
+---
+#====================================
+#============= production ===========
+#====================================
+spring:
+  profiles: production
+#### logback set
+logging:
+  config: classpath:logback/logback-service.xml
+  level:
+    'com.cyworld': INFO
+    'org.apache.kafka': INFO
+
+#### http port set
+server:
+  port: 9090
