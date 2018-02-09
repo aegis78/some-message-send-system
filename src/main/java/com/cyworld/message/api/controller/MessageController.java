@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     @RequestMapping(value = "/sample", method = RequestMethod.GET)
-    public BaseResult messageSend(@RequestParam(value="msg", defaultValue="이것은 봇입니다.") String message) {
+    public BaseResult sampleSend(@RequestParam(value="msg", defaultValue="이것은 봇입니다.") String message) {
         BaseResult result = new BaseResult();
 
         result.setResultCode(200);
@@ -24,6 +24,14 @@ public class MessageController {
         log.debug("result = {}", result.getResultCode());
         log.debug("result = {}", result.getSendMessage());
         log.debug("result = {}", result.getSendType());
+
+        return result;
+    }
+
+    @RequestMapping(value = "/msgSend", method = RequestMethod.POST)
+    public BaseResult messageSend(@RequestParam(value = "token", required = true) String token) {
+        BaseResult result = new BaseResult();
+        
 
         return result;
     }
