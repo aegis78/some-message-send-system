@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class BaseResult {
-    private int resultCode;
-    private String sendMessage;
-    private String sendType;
+    private int resultCode = 200;
+    private String sendMessage= "success";
+    private String sendType = "telegram";
 }
