@@ -51,10 +51,11 @@ public class MessageController {
     }
 
     /**
-     *
+     * Telegram 채널로 Bot token을 통해 메시지를 보낸다.
      * @param token
      * @param text
      * @return
+     * example URL : https://api.telegram.org/bot527604252:AAGh9GEWGionKV9iopqJ5LlejmLjN2_Dpyk/sendMessage?chat_id=@e_alarm&text=telegram
      */
     @RequestMapping(value = "/telegram/send", method = RequestMethod.POST)
     public BaseResult telegramSend(@RequestParam(value = "token", required = true) String token,
@@ -65,7 +66,7 @@ public class MessageController {
         try {
             telegram.telegramSend(token, channel, text);
         } catch (Exception e) {
-            //e.printStackTrace();
+            log.error("[Exception printStack] = {}", e.fillInStackTrace());
             result.setResultCode(500);
             result.setSendMessage(e.getMessage());
             result.setSendType("telegram");
@@ -73,6 +74,4 @@ public class MessageController {
 
         return result;
     }
-
-
 }
