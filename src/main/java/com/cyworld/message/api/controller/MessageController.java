@@ -5,10 +5,8 @@ import com.cyworld.message.service.Telegram;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -58,6 +56,7 @@ public class MessageController {
      * example URL : https://api.telegram.org/bot{apikey}/sendMessage?chat_id=@e_alarm&text=telegram
      */
     @RequestMapping(value = "/telegram/send", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public BaseResult telegramSend(@RequestParam(value = "token", required = true) String token,
                                   @RequestParam(value = "channel", required = true) String channel,
                                   @RequestParam(value = "text", required = true) String text) {
