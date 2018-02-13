@@ -55,7 +55,7 @@ public class MessageController {
      * @param token
      * @param text
      * @return
-     * example URL : https://api.telegram.org/bot527604252:AAGh9GEWGionKV9iopqJ5LlejmLjN2_Dpyk/sendMessage?chat_id=@e_alarm&text=telegram
+     * example URL : https://api.telegram.org/bot{apikey}/sendMessage?chat_id=@e_alarm&text=telegram
      */
     @RequestMapping(value = "/telegram/send", method = RequestMethod.POST)
     public BaseResult telegramSend(@RequestParam(value = "token", required = true) String token,
