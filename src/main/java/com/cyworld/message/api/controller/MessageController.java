@@ -71,6 +71,8 @@ public class MessageController {
             result.setSendType("telegram");
         }
 
+
+        
         return result;
     }
 }
