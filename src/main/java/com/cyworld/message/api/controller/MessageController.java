@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -62,17 +63,27 @@ public class MessageController {
                                   @RequestParam(value = "text", required = true) String text) {
         BaseResult result = new BaseResult();
 
+        if ( StringUtils.isEmpty(token) ) {
+            result.setResult(400, "Not Parameter", "telegram");
+            return result;
+        }
+
+        if ( StringUtils.isEmpty(channel) ) {
+            result.setResult(400, "Not Parameter", "telegram");
+            return result;
+        }
+
         try {
             telegram.telegramSend(token, channel, text);
         } catch (Exception e) {
             log.error("[Exception printStack] = {}", e.fillInStackTrace());
-            result.setResultCode(500);
-            result.setSendMessage(e.getMessage());
-            result.setSendType("telegram");
+            result.setResult(500, e.getMessage(), "telegram");
+            return result;
         }
 
+        result.setResult(200,"success", "telegram");
 
-        
+
         return result;
     }
 }
