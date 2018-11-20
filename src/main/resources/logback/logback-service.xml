@@ -1,8 +1,8 @@
 <configuration>
 
 	<!-- 로그파일명 -->
-	<property name="LOG_FILE" value="/usr/local/msg/logs/operation.log" />
-	<property name="LOG_FILE_TARGET" value="/usr/local/msg/logs/target.log" />
+	<property name="LOG_FILE" value="./logs/operation.log" />
+	<property name="LOG_FILE_TARGET" value="./logs/target.log" />
 	<!-- 로그레벨 : 서버 반영 시(INFO), 로컬 개발 시(DEBUG) -->
 	<Property name="LOG_LEVEL" value="INFO" />
 	
